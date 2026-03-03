@@ -1510,12 +1510,40 @@ function goStep(n) {
 }
 
 function extractPostcodePrefix(postcode) {
-  // Returns prefixes to try, longest first: "SW1A", "SW1", "SW"
-  const p = postcode.replace(/\s/g,'').toUpperCase();
+  // A UK postcode is always "OUTWARD INWARD" e.g. "SW1A 2AA" or "M14 5LR"
+  // The outward code is everything BEFORE the space.
+  // We must split on space FIRST — stripping spaces then running a regex
+  // causes "N1 1AA" to match as "N11" instead of "N1".
+  const trimmed = postcode.trim().toUpperCase();
+
+  // If there's a space, the outward code is before it
+  if (trimmed.includes(' ')) {
+    const outward = trimmed.split(/\s+/)[0];
+    // Also try progressively shorter prefixes as fallbacks
+    const prefixes = [outward];
+    const m2 = outward.match(/^([A-Z]{1,2}\d)/);
+    if (m2 && m2[1] !== outward) prefixes.push(m2[1]);
+    const m3 = outward.match(/^([A-Z]{1,2})/);
+    if (m3) prefixes.push(m3[1]);
+    return prefixes;
+  }
+
+  // No space — user typed without space e.g. "M145LR"
+  // UK outward codes are 2-4 chars: A9, A99, AA9, AA99, A9A, AA9A
+  // Extract by trying longest match first
+  const p = trimmed;
   const prefixes = [];
-  const m1 = p.match(/^([A-Z]{1,2}\d[A-Z\d]?)/); if (m1) prefixes.push(m1[1]);
-  const m2 = p.match(/^([A-Z]{1,2}\d)/);           if (m2 && m2[1] !== prefixes[0]) prefixes.push(m2[1]);
-  const m3 = p.match(/^([A-Z]{1,2})/);             if (m3) prefixes.push(m3[1]);
+  // Try 4-char (e.g. SW1A, EC1A)
+  const m4 = p.match(/^([A-Z]{1,2}\d[A-Z])/);  if (m4) prefixes.push(m4[1]);
+  // Try 3-char (e.g. SW1, M14, LS1)
+  const m3 = p.match(/^([A-Z]{1,2}\d\d)/);
+  if (m3 && !prefixes.includes(m3[1])) prefixes.push(m3[1]);
+  // Try 2-char (e.g. M1, E1, N1, B1)
+  const m2 = p.match(/^([A-Z]{1,2}\d)(?!\d)/);
+  if (m2 && !prefixes.includes(m2[1])) prefixes.push(m2[1]);
+  // Area only (e.g. SW, M, E) — last resort
+  const m1 = p.match(/^([A-Z]{1,2})/);
+  if (m1) prefixes.push(m1[1]);
   return prefixes;
 }
 
