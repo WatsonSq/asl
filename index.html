@@ -93,26 +93,26 @@ body {
   flex-shrink: 0;
 }
 .logo-icon {
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   flex-shrink: 0;
 }
 .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
 .logo-title {
   font-family: 'Playfair Display', Georgia, serif;
   font-weight: 800;
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   color: var(--white);
-  letter-spacing: -0.3px;
+  letter-spacing: -0.5px;
 }
 .logo-sub {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.62rem;
-  font-weight: 500;
+  font-size: 0.6rem;
+  font-weight: 700;
   color: var(--gold-light);
-  letter-spacing: 1.8px;
+  letter-spacing: 2.5px;
   text-transform: uppercase;
-  margin-top: 0.1rem;
+  margin-top: 0.15rem;
 }
 
 .nav-links {
@@ -568,61 +568,200 @@ tbody td:first-child { color: var(--ink); font-weight: 500; font-family: 'DM San
 .belief-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.75; font-weight: 300; }
 
 /* ── MP TOOL ── */
-.tool-hero-section { background: var(--navy); padding: 4rem 0; border-bottom: 3px solid var(--red); }
-.tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; padding: 4rem 0; }
-.tool-left-title { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 900; color: var(--navy); letter-spacing: -0.5px; line-height: 1.08; margin-bottom: 1rem; }
-.tool-left-title em { color: var(--red); }
-.tool-left-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.8; font-weight: 300; margin-bottom: 1.2rem; }
-.tool-fact { display: flex; gap: 0.8rem; padding: 0.9rem; background: var(--off); border-left: 3px solid var(--gold); border-radius: 0 3px 3px 0; margin-bottom: 0.6rem; }
-.tool-fact p { font-size: 0.83rem; color: var(--ink2); line-height: 1.6; font-weight: 300; }
-.tool-fact p strong { color: var(--navy); font-weight: 600; font-family: 'DM Sans', sans-serif; }
+.mp-cta-banner {
+  background: var(--red);
+  padding: 5rem 0 4rem;
+  position: relative;
+  overflow: hidden;
+}
+.mp-cta-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(255,255,255,0.03) 0px,
+    rgba(255,255,255,0.03) 1px,
+    transparent 1px,
+    transparent 12px
+  );
+}
+.mp-cta-banner::after {
+  content: 'WRITE NOW';
+  position: absolute;
+  right: -2rem;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 8rem;
+  font-weight: 900;
+  color: rgba(255,255,255,0.04);
+  letter-spacing: -4px;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.mp-cta-inner { position: relative; z-index: 2; }
+.mp-cta-kicker {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.mp-cta-kicker::before { content: ''; width: 20px; height: 1.5px; background: rgba(255,255,255,0.5); }
+.mp-cta-h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.0;
+  letter-spacing: -2px;
+  max-width: 820px;
+  margin-bottom: 1.5rem;
+}
+.mp-cta-h1 em { font-style: italic; color: var(--gold-light); }
+.mp-cta-sub {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.75;
+  max-width: 600px;
+  font-weight: 300;
+  margin-bottom: 2.5rem;
+}
+.mp-cta-stats {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.2);
+}
+.mp-cta-stat { }
+.mp-cta-stat-val {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--gold-light);
+  line-height: 1;
+  letter-spacing: -0.5px;
+}
+.mp-cta-stat-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.55);
+  margin-top: 0.2rem;
+  line-height: 1.4;
+}
 
-/* FORM */
-.form-panel { background: var(--white); border: 1.5px solid var(--rule); border-radius: 4px; overflow: hidden; }
-.form-panel-header { background: var(--navy); padding: 1.2rem 1.8rem; display: flex; align-items: center; gap: 1rem; }
-.form-step-dots { display: flex; gap: 0.4rem; }
-.fsd { width: 20px; height: 3px; border-radius: 99px; background: rgba(255,255,255,0.2); transition: background 0.3s; }
+/* TOOL BODY */
+.mp-tool-body { background: var(--off); }
+.mp-tool-grid {
+  display: grid;
+  grid-template-columns: 1fr 480px;
+  gap: 4rem;
+  align-items: start;
+  padding: 4rem 0;
+}
+.mp-why-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 1.2rem;
+  letter-spacing: -0.3px;
+}
+.mp-fact-list { list-style: none; margin-bottom: 2rem; }
+.mp-fact-list li {
+  display: flex;
+  gap: 0.9rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--rule2);
+  font-size: 0.875rem;
+  color: var(--ink2);
+  line-height: 1.65;
+  font-weight: 300;
+}
+.mp-fact-list li:last-child { border-bottom: none; }
+.mp-fact-icon {
+  width: 24px;
+  height: 24px;
+  background: var(--navy);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  color: var(--gold-light);
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+}
+.mp-fact-list strong { color: var(--navy); font-weight: 600; font-family: 'DM Sans', sans-serif; }
+.mp-share-note {
+  background: var(--navy);
+  color: rgba(255,255,255,0.7);
+  border-radius: 4px;
+  padding: 1.2rem 1.5rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  line-height: 1.65;
+}
+.mp-share-note strong { color: var(--gold-light); display: block; margin-bottom: 0.3rem; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; }
+
+/* FORM PANEL */
+.form-panel { background: var(--white); border: 1.5px solid var(--rule); border-radius: 4px; overflow: hidden; box-shadow: 0 4px 30px rgba(0,0,0,0.08); }
+.form-panel-header { background: var(--navy); padding: 1.2rem 1.8rem; display: flex; align-items: center; justify-content: space-between; }
+.form-step-track { display: flex; gap: 0.4rem; }
+.fsd { flex: 1; width: 40px; height: 3px; border-radius: 99px; background: rgba(255,255,255,0.15); transition: background 0.3s; }
 .fsd.on { background: var(--gold-light); }
-.fsd.done { background: rgba(201,150,60,0.4); }
-.form-panel-title { font-family: 'DM Sans', sans-serif; font-size: 0.78rem; font-weight: 600; color: rgba(255,255,255,0.6); letter-spacing: 0.5px; }
+.fsd.done { background: rgba(201,150,60,0.5); }
+.form-panel-title { font-family: 'DM Sans', sans-serif; font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.5); letter-spacing: 0.5px; }
 .form-panel-body { padding: 2rem 1.8rem; }
 .ts { display: none; }
 .ts.active { display: block; }
-.ts-title { font-family: 'Playfair Display', Georgia, serif; font-size: 1.3rem; font-weight: 800; color: var(--navy); margin-bottom: 0.25rem; }
-.ts-sub { font-family: 'DM Sans', sans-serif; font-size: 0.8rem; color: var(--muted); margin-bottom: 1.8rem; }
-.fg { margin-bottom: 1.1rem; }
-label { display: block; font-family: 'DM Sans', sans-serif; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: var(--muted); margin-bottom: 0.4rem; }
-input:not([type=range]), textarea { width: 100%; background: var(--off); border: 1px solid var(--rule); border-radius: 3px; padding: 0.75rem 0.9rem; font-family: 'Source Serif 4', Georgia, serif; font-size: 0.9rem; color: var(--ink); outline: none; transition: border-color 0.15s, box-shadow 0.15s; }
-input:not([type=range]):focus, textarea:focus { border-color: var(--navy); box-shadow: 0 0 0 3px rgba(13,27,42,0.06); }
+.ts-title { font-family: 'Playfair Display', Georgia, serif; font-size: 1.25rem; font-weight: 800; color: var(--navy); margin-bottom: 0.25rem; }
+.ts-sub { font-family: 'DM Sans', sans-serif; font-size: 0.8rem; color: var(--muted); margin-bottom: 1.6rem; }
+.fg { margin-bottom: 1rem; }
+label { display: block; font-family: 'DM Sans', sans-serif; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: var(--muted); margin-bottom: 0.4rem; }
+input:not([type=range]), textarea { width: 100%; background: var(--off); border: 1px solid var(--rule); border-radius: 3px; padding: 0.72rem 0.9rem; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; color: var(--ink); outline: none; transition: border-color 0.15s, box-shadow 0.15s; }
+input:not([type=range]):focus, textarea:focus { border-color: var(--navy); box-shadow: 0 0 0 3px rgba(13,27,42,0.06); background: var(--white); }
 input::placeholder, textarea::placeholder { color: #bbb; }
-.debt-display { background: var(--navy); border-radius: 3px; padding: 1.2rem; text-align: center; margin-bottom: 0.7rem; }
-.debt-display-val { font-family: 'Playfair Display', Georgia, serif; font-size: 2.5rem; font-weight: 900; color: var(--gold-light); letter-spacing: -1.5px; line-height: 1; }
-.debt-display-label { font-family: 'DM Sans', sans-serif; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.45); margin-top: 0.25rem; }
-input[type=range] { width: 100%; border: none; background: transparent; accent-color: var(--navy); cursor: pointer; padding: 0; }
-.range-labels { display: flex; justify-content: space-between; font-family: 'DM Sans', sans-serif; font-size: 0.65rem; color: var(--muted); margin-top: 0.35rem; }
+.debt-display { background: var(--navy); border-radius: 3px; padding: 1.1rem 1.2rem; text-align: center; margin-bottom: 0.6rem; }
+.debt-display-val { font-family: 'Playfair Display', Georgia, serif; font-size: 2.3rem; font-weight: 900; color: var(--gold-light); letter-spacing: -1.5px; line-height: 1; }
+.debt-display-label { font-family: 'DM Sans', sans-serif; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.4); margin-top: 0.2rem; }
+input[type=range] { width: 100%; border: none; background: transparent; accent-color: var(--red); cursor: pointer; padding: 0; }
+.range-labels { display: flex; justify-content: space-between; font-family: 'DM Sans', sans-serif; font-size: 0.63rem; color: var(--muted); margin-top: 0.3rem; }
 textarea { resize: none; height: 260px; font-size: 0.83rem; line-height: 1.7; font-family: 'DM Sans', sans-serif; }
-.mp-result { background: var(--off); border: 1px solid var(--rule); border-left: 3px solid var(--gold); border-radius: 0 3px 3px 0; padding: 1rem 1.2rem; margin-bottom: 1rem; display: none; }
-.mp-result.show { display: block; }
-.mp-party-label { font-family: 'DM Sans', sans-serif; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--gold); margin-bottom: 0.2rem; }
-.mp-name { font-family: 'Playfair Display', Georgia, serif; font-size: 1.25rem; font-weight: 800; color: var(--navy); }
-.mp-constituency { font-family: 'DM Sans', sans-serif; font-size: 0.78rem; color: var(--muted); margin-top: 0.1rem; }
-.err-msg { background: #fef2f2; border: 1px solid #fecaca; border-radius: 3px; padding: 0.75rem 1rem; font-family: 'DM Sans', sans-serif; font-size: 0.83rem; color: var(--red); margin-bottom: 1rem; display: none; }
-.hint-msg { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 3px; padding: 0.75rem 1rem; font-family: 'DM Sans', sans-serif; font-size: 0.82rem; color: #1e40af; margin-bottom: 1rem; }
+.mp-result-card { background: linear-gradient(135deg, var(--off) 0%, #fdf8f0 100%); border: 1px solid var(--rule); border-left: 4px solid var(--gold); border-radius: 0 3px 3px 0; padding: 1.1rem 1.3rem; margin-bottom: 1rem; display: none; }
+.mp-result-card.show { display: block; }
+.mp-party-label { font-family: 'DM Sans', sans-serif; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: var(--gold); margin-bottom: 0.15rem; }
+.mp-fullname { font-family: 'Playfair Display', Georgia, serif; font-size: 1.2rem; font-weight: 800; color: var(--navy); line-height: 1.2; }
+.mp-seat { font-family: 'DM Sans', sans-serif; font-size: 0.78rem; color: var(--muted); margin-top: 0.15rem; }
+.mp-email-shown { font-family: 'DM Sans', sans-serif; font-size: 0.75rem; color: var(--red); margin-top: 0.3rem; font-weight: 500; }
+.err-msg { background: #fef2f2; border: 1px solid #fecaca; border-radius: 3px; padding: 0.75rem 1rem; font-family: 'DM Sans', sans-serif; font-size: 0.83rem; color: var(--red); margin-bottom: 1rem; display: none; line-height: 1.5; }
+.hint-msg { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 3px; padding: 0.72rem 1rem; font-family: 'DM Sans', sans-serif; font-size: 0.8rem; color: #15803d; margin-bottom: 1rem; }
 .load-msg { display: none; align-items: center; gap: 0.6rem; font-family: 'DM Sans', sans-serif; font-size: 0.83rem; color: var(--muted); padding: 0.5rem 0 1rem; }
 .load-msg.show { display: flex; }
 .spinner { width: 15px; height: 15px; border: 2px solid var(--rule); border-top-color: var(--navy); border-radius: 50%; animation: spin 0.6s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
 .email-preview { background: var(--off); border: 1px solid var(--rule); border-radius: 3px; overflow: hidden; margin-bottom: 1rem; }
 .email-preview-head { background: var(--white); border-bottom: 1px solid var(--rule); padding: 0.8rem 1rem; font-family: 'DM Sans', sans-serif; font-size: 0.78rem; color: var(--muted); line-height: 1.9; }
-.email-preview-head span { color: var(--ink); font-weight: 500; }
+.email-preview-head span { color: var(--ink); font-weight: 600; }
 .email-preview-body { padding: 1rem; }
 .btn-submit { width: 100%; background: var(--red); color: var(--white); border: none; padding: 0.9rem; border-radius: 3px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 0.875rem; cursor: pointer; transition: background 0.15s, transform 0.15s; letter-spacing: 0.3px; margin-bottom: 0.6rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
 .btn-submit:hover { background: var(--red2); transform: translateY(-1px); }
-.btn-back { width: 100%; background: var(--off); color: var(--muted); border: 1px solid var(--rule); padding: 0.75rem; border-radius: 3px; font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.83rem; cursor: pointer; transition: all 0.15s; }
+.btn-back { width: 100%; background: var(--off); color: var(--muted); border: 1px solid var(--rule); padding: 0.72rem; border-radius: 3px; font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.83rem; cursor: pointer; transition: all 0.15s; }
 .btn-back:hover { background: var(--off2); color: var(--ink); }
 .success-msg { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 3px; padding: 1.2rem; text-align: center; margin-top: 0.8rem; display: none; }
 .success-msg h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.1rem; font-weight: 800; color: #15803d; margin-bottom: 0.3rem; }
 .success-msg p { font-family: 'DM Sans', sans-serif; font-size: 0.82rem; color: #166534; line-height: 1.6; }
+.mp-fallback-note { font-family: 'DM Sans', sans-serif; font-size: 0.72rem; color: var(--muted); margin-top: 0.5rem; font-style: italic; line-height: 1.5; }
+.mp-fallback-note a { color: var(--red); }
 
 /* ── FOOTER ── */
 footer { background: var(--navy2); border-top: 3px solid var(--gold); }
@@ -643,7 +782,8 @@ footer { background: var(--navy2); border-top: 3px solid var(--gold); }
 
 /* RESPONSIVE */
 @media (max-width: 960px) {
-  .hero-inner, .about-grid, .tool-grid, .news-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+  .hero-inner, .about-grid, .tool-grid, .news-layout, .mp-tool-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .mp-cta-stats { gap: 1.2rem; }
   .hero-stats { flex-direction: row; flex-wrap: wrap; }
   .h-stat { flex: 1 1 200px; }
   .issue-grid { grid-template-columns: 1fr; }
@@ -681,22 +821,17 @@ footer { background: var(--navy2); border-top: 3px solid var(--gold); }
 <nav class="nav">
   <div class="nav-inner">
     <a class="logo" onclick="show('home');return false" href="#">
-      <!-- SVG Logo: Scales of Justice with graduation cap -->
-      <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="40" height="40" rx="4" fill="#C0392B"/>
-        <!-- Graduation cap -->
-        <polygon points="20,8 30,13 20,18 10,13" fill="#F0C46E"/>
-        <rect x="26" y="13" width="1.5" height="7" fill="#F0C46E"/>
-        <path d="M26 20 L26 24 Q27.5 26 29 24 L29 20" fill="none" stroke="#F0C46E" stroke-width="1.2"/>
-        <!-- Scales beam -->
-        <rect x="9" y="22" width="22" height="1.5" rx="0.75" fill="white" opacity="0.9"/>
-        <rect x="19.25" y="18" width="1.5" height="5" fill="white" opacity="0.9"/>
-        <!-- Left pan -->
-        <path d="M9 23.5 Q9 27.5 14 27.5 Q19 27.5 19 23.5 Z" fill="white" opacity="0.7"/>
-        <!-- Right pan -->
-        <path d="M21 23.5 Q21 27.5 26 27.5 Q31 27.5 31 23.5 Z" fill="white" opacity="0.45"/>
-        <!-- Base line -->
-        <rect x="8" y="30.5" width="24" height="1.5" rx="0.75" fill="white" opacity="0.5"/>
+      <!-- Logo: Graduation cap + broken chain (debt freedom) -->
+      <svg class="logo-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="44" height="44" rx="5" fill="#0d1b2a"/>
+        <rect width="44" height="4" rx="5" fill="#c0392b"/>
+        <polygon points="22,10 33,15.5 22,21 11,15.5" fill="#f0c46e"/>
+        <rect x="19" y="8" width="6" height="3.5" rx="1" fill="#f0c46e" opacity="0.9"/>
+        <line x1="33" y1="15.5" x2="33" y2="22" stroke="#f0c46e" stroke-width="1.5"/>
+        <circle cx="33" cy="23.5" r="1.8" fill="#f0c46e"/>
+        <path d="M16 26 Q13 26 13 29.5 Q13 33 16 33 L19.5 33" stroke="rgba(255,255,255,0.8)" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+        <path d="M24.5 26 Q28 26 28 29.5 Q28 33 24.5 33 L21 33" stroke="#c0392b" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+        <line x1="20" y1="24.5" x2="21.5" y2="34" stroke="#f0c46e" stroke-width="1.8" stroke-linecap="round"/>
       </svg>
       <div class="logo-text">
         <span class="logo-title">Abolish Student Loans</span>
@@ -1036,99 +1171,147 @@ footer { background: var(--navy2); border-top: 3px solid var(--gold); }
 
 <!-- ═══════════ MP TOOL ═══════════ -->
 <div id="mp" class="page">
-  <div class="tool-hero-section">
-    <div class="wrap">
-      <div class="eyebrow" style="color:var(--gold-light)"><span style="background:var(--gold-light);display:block;width:16px;height:1.5px"></span>Take Action</div>
-      <h1 style="font-family:'Playfair Display',Georgia,serif;font-size:clamp(2rem,4vw,3rem);font-weight:900;color:var(--white);letter-spacing:-0.5px;max-width:700px;line-height:1.1">
-        Your MP represents you. Make sure they hear from you.
-      </h1>
-      <p style="color:rgba(255,255,255,0.6);font-size:0.95rem;margin-top:1rem;font-weight:300;max-width:600px;line-height:1.75">A Westminster Hall debate on student loan repayment plans took place on 25 February 2026. Political pressure from constituents is the mechanism through which debate becomes legislation.</p>
+
+  <!-- BOLD CTA BANNER -->
+  <div class="mp-cta-banner">
+    <div class="wrap mp-cta-inner">
+      <div class="mp-cta-kicker">Take Action Now</div>
+      <h1 class="mp-cta-h1">Your MP is your<br>voice in <em>Parliament.</em><br>Use it.</h1>
+      <p class="mp-cta-sub">A Westminster Hall debate on student loans took place on 25 February 2026. MPs are listening — but only if constituents make themselves heard. Write to your MP today. It takes two minutes and it matters.</p>
+      <div class="mp-cta-stats">
+        <div class="mp-cta-stat">
+          <div class="mp-cta-stat-val">650</div>
+          <div class="mp-cta-stat-label">MPs who can be contacted<br>right now</div>
+        </div>
+        <div class="mp-cta-stat">
+          <div class="mp-cta-stat-val">~2 min</div>
+          <div class="mp-cta-stat-label">Time it takes to send<br>your letter</div>
+        </div>
+        <div class="mp-cta-stat">
+          <div class="mp-cta-stat-val">100%</div>
+          <div class="mp-cta-stat-label">Of MPs must respond to<br>constituent correspondence</div>
+        </div>
+        <div class="mp-cta-stat">
+          <div class="mp-cta-stat-val">£53k</div>
+          <div class="mp-cta-stat-label">Average debt your MP<br>could help abolish</div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="wrap">
-    <div class="tool-grid">
-      <div>
-        <h2 class="tool-left-title">Write to Your <em>Member of Parliament</em></h2>
-        <p class="tool-left-desc">Enter your postcode below. We will identify your MP using the official UK Parliament Members API and generate a personalised, evidenced letter based on your debt level — ready to send via your own email client in under two minutes. No data is stored.</p>
-        <div class="tool-fact">
-          <p><strong>Westminster Hall Debate:</strong> A formal parliamentary debate on student loan repayment plans was held on 25 February 2026. MPs are actively engaged with this issue — your letter will land in an active inbox.</p>
-        </div>
-        <div class="tool-fact">
-          <p><strong>Why individual emails matter:</strong> Unlike petitions, personal constituent letters require a formal response from an MP's office and are tracked by party whips as indicators of local pressure on policy.</p>
-        </div>
-        <div class="tool-fact">
-          <p><strong>Sources used in your letter:</strong> House of Commons Library, IPPR, HEPI, ITV News, MoneySavingExpert, Student Loans Company — all cited, all verifiable.</p>
-        </div>
-      </div>
-      <div>
-        <div class="form-panel">
-          <div class="form-panel-header">
-            <div class="form-step-dots">
-              <div class="fsd on" id="fsd1"></div>
-              <div class="fsd" id="fsd2"></div>
-              <div class="fsd" id="fsd3"></div>
-            </div>
-            <span class="form-panel-title" id="formTitle">Step 1 of 3 — Your Details</span>
-          </div>
-          <div class="form-panel-body">
+  <!-- TOOL BODY -->
+  <div class="mp-tool-body">
+    <div class="wrap">
+      <div class="mp-tool-grid">
 
-            <div class="ts active" id="ts1">
-              <div class="ts-title">Your details</div>
-              <p class="ts-sub">We need these to personalise your letter and identify your MP.</p>
-              <div class="fg"><label>Full Name</label><input type="text" id="uName" placeholder="e.g. Alex Johnson"></div>
-              <div class="fg"><label>Postcode</label><input type="text" id="uPost" placeholder="e.g. M14 5LR"></div>
-              <div class="fg"><label>Email Address</label><input type="email" id="uEmail" placeholder="e.g. alex@example.com"></div>
-              <div class="fg">
-                <label>Student Debt Balance</label>
-                <div class="debt-display">
-                  <div class="debt-display-val" id="dVal">£30,000</div>
-                  <div class="debt-display-label">Your current student debt balance</div>
-                </div>
-                <input type="range" id="dRange" min="0" max="100000" step="500" value="30000" oninput="document.getElementById('dVal').textContent='£'+parseInt(this.value).toLocaleString()">
-                <div class="range-labels"><span>£0</span><span>£50,000</span><span>£100,000+</span></div>
-              </div>
-              <div class="fg"><label>University (optional)</label><input type="text" id="uUni" placeholder="e.g. University of Leeds"></div>
-              <div class="fg"><label>Graduation Year (optional)</label><input type="number" id="uYear" placeholder="e.g. 2020" min="1990" max="2030"></div>
-              <button class="btn-submit" onclick="step2()">Find My MP →</button>
-            </div>
-
-            <div class="ts" id="ts2">
-              <div class="ts-title">Your MP</div>
-              <p class="ts-sub">Searching the UK Parliament Members API.</p>
-              <div class="load-msg" id="mpLoad"><div class="spinner"></div>Looking up your MP…</div>
-              <div class="err-msg" id="mpErr"></div>
-              <div class="mp-result" id="mpCard">
-                <div class="mp-party-label" id="mpPty"></div>
-                <div class="mp-name" id="mpNm"></div>
-                <div class="mp-constituency" id="mpCon"></div>
-              </div>
-              <div class="hint-msg" id="mpHint" style="display:none">✓ MP found. Your letter has been drafted with specific evidence and statistics. Review and edit it on the next step before sending.</div>
-              <button class="btn-submit" id="toTs3" style="display:none" onclick="step3()">Preview My Letter →</button>
-              <button class="btn-back" onclick="goStep(1)" style="margin-top:0.4rem">← Back</button>
-            </div>
-
-            <div class="ts" id="ts3">
-              <div class="ts-title">Review &amp; Send</div>
-              <p class="ts-sub">Edit the letter if you wish, then open it in your email app.</p>
-              <div class="email-preview">
-                <div class="email-preview-head">
-                  <div><strong>To:</strong> <span id="eTo"></span></div>
-                  <div><strong>Subject:</strong> Student Loans &amp; Tuition Fees — A Constituent's Concern</div>
-                </div>
-                <div class="email-preview-body"><textarea id="eBody"></textarea></div>
-              </div>
-              <div class="hint-msg">Open in your email app (Gmail, Outlook, Apple Mail) and hit Send. It takes 30 seconds.</div>
-              <button class="btn-submit" onclick="doSend()">Open in Email App &amp; Send →</button>
-              <div class="success-msg" id="okMsg">
-                <h4>✓ Letter opened successfully</h4>
-                <p>Your email client should have the letter ready to send. Thank you — every letter received by an MP's office is counted and recorded. Please share this page with others affected by student debt.</p>
-              </div>
-              <button class="btn-back" onclick="goStep(2)" style="margin-top:0.4rem">← Back</button>
-            </div>
-
+        <!-- LEFT: WHY IT MATTERS -->
+        <div>
+          <h2 class="mp-why-title">Why writing to your MP works</h2>
+          <ul class="mp-fact-list">
+            <li>
+              <div class="mp-fact-icon">1</div>
+              <div><strong>MPs must respond to constituent letters.</strong> Unlike petitions, a personal letter from a constituent requires a formal written response from the MP's office — by convention and by political necessity.</div>
+            </li>
+            <li>
+              <div class="mp-fact-icon">2</div>
+              <div><strong>Volume is tracked.</strong> Party whips monitor how many letters MPs receive on specific issues. High volumes on a single topic move it up the legislative agenda. Your email is counted.</div>
+            </li>
+            <li>
+              <div class="mp-fact-icon">3</div>
+              <div><strong>The political moment is now.</strong> A Westminster Hall debate on student loan repayment plans took place on 25 February 2026. MPs have already signalled engagement. Your letter arrives at the right time.</div>
+            </li>
+            <li>
+              <div class="mp-fact-icon">4</div>
+              <div><strong>Your letter is evidenced.</strong> We include cited statistics from the House of Commons Library, IPPR, HEPI and the Student Loans Company — so your MP cannot dismiss it as anecdote.</div>
+            </li>
+            <li>
+              <div class="mp-fact-icon">5</div>
+              <div><strong>Your data stays private.</strong> Nothing you enter is stored. The MP lookup uses the official UK Parliament API and postcodes.io. Your email is composed locally in your browser and sent via your own email client.</div>
+            </li>
+          </ul>
+          <div class="mp-share-note">
+            <strong>📣 Share this page</strong>
+            Every person who writes to their MP amplifies the pressure. If you know other graduates carrying student debt, share this page with them. The more constituencies that contact their MP, the harder this issue is to ignore.
           </div>
         </div>
+
+        <!-- RIGHT: FORM -->
+        <div>
+          <div class="form-panel">
+            <div class="form-panel-header">
+              <div class="form-step-track">
+                <div class="fsd on" id="fsd1"></div>
+                <div class="fsd" id="fsd2"></div>
+                <div class="fsd" id="fsd3"></div>
+              </div>
+              <span class="form-panel-title" id="formTitle">Step 1 of 3 — Your Details</span>
+            </div>
+            <div class="form-panel-body">
+
+              <!-- STEP 1 -->
+              <div class="ts active" id="ts1">
+                <div class="ts-title">Your details</div>
+                <p class="ts-sub">Used to find your MP and personalise your letter. Nothing is stored.</p>
+                <div class="fg"><label>Full Name</label><input type="text" id="uName" placeholder="e.g. Sarah Williams" autocomplete="name"></div>
+                <div class="fg"><label>Your Postcode</label><input type="text" id="uPost" placeholder="e.g. SW1A 2AA" autocomplete="postal-code" style="text-transform:uppercase"></div>
+                <div class="fg"><label>Your Email Address</label><input type="email" id="uEmail" placeholder="e.g. sarah@example.com" autocomplete="email"></div>
+                <div class="fg">
+                  <label>Your Student Debt Balance</label>
+                  <div class="debt-display">
+                    <div class="debt-display-val" id="dVal">£30,000</div>
+                    <div class="debt-display-label">Drag to set your balance</div>
+                  </div>
+                  <input type="range" id="dRange" min="0" max="100000" step="500" value="30000"
+                    oninput="document.getElementById('dVal').textContent='£'+parseInt(this.value).toLocaleString()">
+                  <div class="range-labels"><span>£0</span><span>£50,000</span><span>£100,000+</span></div>
+                </div>
+                <div class="fg"><label>University (optional)</label><input type="text" id="uUni" placeholder="e.g. University of Sheffield"></div>
+                <div class="fg"><label>Graduation Year (optional)</label><input type="number" id="uYear" placeholder="e.g. 2021" min="1990" max="2030"></div>
+                <button class="btn-submit" onclick="step2()">Find My MP →</button>
+              </div>
+
+              <!-- STEP 2 -->
+              <div class="ts" id="ts2">
+                <div class="ts-title">Your MP</div>
+                <p class="ts-sub">Looking up your elected representative via the UK Parliament API.</p>
+                <div class="load-msg" id="mpLoad"><div class="spinner"></div>Searching for your MP…</div>
+                <div class="err-msg" id="mpErr"></div>
+                <div class="mp-result-card" id="mpCard">
+                  <div class="mp-party-label" id="mpPty"></div>
+                  <div class="mp-fullname" id="mpNm"></div>
+                  <div class="mp-seat" id="mpCon"></div>
+                  <div class="mp-email-shown" id="mpEmailShown"></div>
+                </div>
+                <div class="hint-msg" id="mpHint" style="display:none">✓ MP found. Your letter has been drafted using published statistics and policy evidence. Review and edit it on the next step.</div>
+                <button class="btn-submit" id="toTs3" style="display:none" onclick="step3()">Preview My Letter →</button>
+                <button class="btn-back" onclick="goStep(1)" style="margin-top:0.4rem">← Back</button>
+              </div>
+
+              <!-- STEP 3 -->
+              <div class="ts" id="ts3">
+                <div class="ts-title">Review &amp; Send</div>
+                <p class="ts-sub">Edit freely — then click to open in your email app and send.</p>
+                <div class="email-preview">
+                  <div class="email-preview-head">
+                    <div><strong>To:</strong> <span id="eTo"></span></div>
+                    <div><strong>Subject:</strong> Student Loans &amp; Tuition Fees — A Constituent's Concern</div>
+                  </div>
+                  <div class="email-preview-body"><textarea id="eBody"></textarea></div>
+                </div>
+                <div class="hint-msg">📬 Click the button below to open this letter in Gmail, Outlook or Apple Mail — then press Send.</div>
+                <button class="btn-submit" onclick="doSend()">📧 Open in My Email App &amp; Send</button>
+                <div class="success-msg" id="okMsg">
+                  <h4>✓ Email client opened</h4>
+                  <p>Your letter should now be ready in your email app. Hit Send — and thank you. Every letter an MP receives on this issue moves it further up the political agenda.</p>
+                </div>
+                <p class="mp-fallback-note" id="fallbackNote" style="display:none">⚠️ If your email app didn't open, you can copy the letter above and paste it into an email to your MP. Find their contact details at <a href="https://members.parliament.uk/FindYourMP" target="_blank">members.parliament.uk</a>.</p>
+                <button class="btn-back" onclick="goStep(2)" style="margin-top:0.4rem">← Back</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -1139,16 +1322,16 @@ footer { background: var(--navy2); border-top: 3px solid var(--gold); }
   <div class="footer-main">
     <div class="footer-brand">
       <div class="footer-logo">
-        <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="40" height="40" rx="4" fill="#C0392B"/>
-          <polygon points="20,8 30,13 20,18 10,13" fill="#F0C46E"/>
-          <rect x="26" y="13" width="1.5" height="7" fill="#F0C46E"/>
-          <path d="M26 20 L26 24 Q27.5 26 29 24 L29 20" fill="none" stroke="#F0C46E" stroke-width="1.2"/>
-          <rect x="9" y="22" width="22" height="1.5" rx="0.75" fill="white" opacity="0.9"/>
-          <rect x="19.25" y="18" width="1.5" height="5" fill="white" opacity="0.9"/>
-          <path d="M9 23.5 Q9 27.5 14 27.5 Q19 27.5 19 23.5 Z" fill="white" opacity="0.7"/>
-          <path d="M21 23.5 Q21 27.5 26 27.5 Q31 27.5 31 23.5 Z" fill="white" opacity="0.45"/>
-          <rect x="8" y="30.5" width="24" height="1.5" rx="0.75" fill="white" opacity="0.5"/>
+        <svg width="36" height="36" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="44" height="44" rx="5" fill="#0d1b2a"/>
+          <rect width="44" height="4" rx="5" fill="#c0392b"/>
+          <polygon points="22,10 33,15.5 22,21 11,15.5" fill="#f0c46e"/>
+          <rect x="19" y="8" width="6" height="3.5" rx="1" fill="#f0c46e" opacity="0.9"/>
+          <line x1="33" y1="15.5" x2="33" y2="22" stroke="#f0c46e" stroke-width="1.5"/>
+          <circle cx="33" cy="23.5" r="1.8" fill="#f0c46e"/>
+          <path d="M16 26 Q13 26 13 29.5 Q13 33 16 33 L19.5 33" stroke="rgba(255,255,255,0.8)" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+          <path d="M24.5 26 Q28 26 28 29.5 Q28 33 24.5 33 L21 33" stroke="#c0392b" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+          <line x1="20" y1="24.5" x2="21.5" y2="34" stroke="#f0c46e" stroke-width="1.8" stroke-linecap="round"/>
         </svg>
         <div class="logo-text">
           <span class="logo-title">Abolish Student Loans</span>
@@ -1296,7 +1479,23 @@ function filterArticles(q) {
 }
 
 // ── MP TOOL ──
-let mpData = null;
+// Looks up MP from mp_data.json (generated by scrape_mps.js)
+// Falls back to postcodes.io + Parliament API if file not found
+
+let mpData   = null;
+let MP_DB    = null;   // loaded from mp_data.json
+
+async function loadMPDatabase() {
+  if (MP_DB) return MP_DB;
+  try {
+    const res = await fetch('mp_data.json');
+    if (!res.ok) throw new Error('not found');
+    MP_DB = await res.json();
+    return MP_DB;
+  } catch(_) {
+    return null;
+  }
+}
 
 function goStep(n) {
   [1,2,3].forEach(i => {
@@ -1310,109 +1509,200 @@ function goStep(n) {
   document.getElementById('formTitle').textContent = titles[n];
 }
 
-async function step2() {
-  const name = document.getElementById('uName').value.trim();
-  const post = document.getElementById('uPost').value.trim();
-  if (!name) { alert('Please enter your name.'); return; }
-  if (!post) { alert('Please enter your postcode.'); return; }
-  goStep(2);
-  document.getElementById('mpLoad').classList.add('show');
-  document.getElementById('mpCard').classList.remove('show');
-  document.getElementById('mpHint').style.display = 'none';
-  document.getElementById('toTs3').style.display = 'none';
-  document.getElementById('mpErr').style.display = 'none';
+function extractPostcodePrefix(postcode) {
+  // Returns prefixes to try, longest first: "SW1A", "SW1", "SW"
+  const p = postcode.replace(/\s/g,'').toUpperCase();
+  const prefixes = [];
+  const m1 = p.match(/^([A-Z]{1,2}\d[A-Z\d]?)/); if (m1) prefixes.push(m1[1]);
+  const m2 = p.match(/^([A-Z]{1,2}\d)/);           if (m2 && m2[1] !== prefixes[0]) prefixes.push(m2[1]);
+  const m3 = p.match(/^([A-Z]{1,2})/);             if (m3) prefixes.push(m3[1]);
+  return prefixes;
+}
+
+async function lookupMPFromDB(postcode, db) {
+  const prefixes = extractPostcodePrefix(postcode);
+  let constituency = null;
+  for (const p of prefixes) {
+    if (db.postcode_map[p]) { constituency = db.postcode_map[p]; break; }
+  }
+  if (!constituency) return null;
+  return db.mps[constituency.toLowerCase()] || null;
+}
+
+async function lookupMPFromAPI(postcode) {
+  // Direct Parliament API fallback
+  const pc = postcode.replace(/\s/g,'');
+  const pcRes = await fetch(`https://api.postcodes.io/postcodes/${pc}`);
+  const pcJson = await pcRes.json();
+  if (pcJson.status !== 200) throw new Error('Postcode not found');
+  const conName = pcJson.result.parliamentary_constituency_2024 || pcJson.result.parliamentary_constituency;
+  if (!conName) throw new Error('No constituency found');
+
+  const mpRes = await fetch(
+    `https://members-api.parliament.uk/api/Members/Search?constituency=${encodeURIComponent(conName)}&House=1&IsCurrentMember=true&skip=0&take=20`
+  );
+  const mpJson = await mpRes.json();
+  if (!mpJson.items?.length) throw new Error('No MP found');
+
+  // Find best match
+  const exact = mpJson.items.find(i =>
+    (i.value.latestHouseMembership?.membershipFrom||'').toLowerCase() === conName.toLowerCase()
+  );
+  const member = (exact || mpJson.items[0]).value;
+
+  // Build email
+  let email = null;
   try {
-    const pc = post.replace(/\s+/g,'').toUpperCase();
-    const r1 = await fetch('https://api.postcodes.io/postcodes/'+pc);
-    const d1 = await r1.json();
-    if (d1.status !== 200) throw new Error('Postcode not found. Please check and try again.');
-    const con = d1.result.parliamentary_constituency_2024 || d1.result.parliamentary_constituency;
-    if (!con) throw new Error('Could not determine a constituency for that postcode.');
-    const r2 = await fetch('https://members-api.parliament.uk/api/Members/Search?constituency='+encodeURIComponent(con)+'&House=1&IsCurrentMember=true');
-    const d2 = await r2.json();
-    if (!d2.items || d2.items.length === 0) throw new Error('No current MP found — there may be a by-election pending in your constituency.');
-    const m = d2.items[0].value;
-    let email = null;
-    try {
-      const r3 = await fetch('https://members-api.parliament.uk/api/Members/'+m.id+'/Contact');
-      const d3 = await r3.json();
-      const ec = (d3.value||[]).find(c => c.type==='Email');
-      if (ec) email = ec.email || ec.value;
-    } catch(e) {}
-    if (!email) {
-      const pts = m.nameDisplayAs.toLowerCase().replace(/[^a-z\s]/g,'').trim().split(/\s+/);
-      email = pts.length >= 2 ? pts[0]+'.'+pts[pts.length-1]+'@parliament.uk' : 'contact@parliament.uk';
+    const cRes = await fetch(`https://members-api.parliament.uk/api/Members/${member.id}/Contact`);
+    const cJson = await cRes.json();
+    for (const block of (cJson.value||[])) {
+      for (const v of Object.values(block)) {
+        if (typeof v === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) { email = v; break; }
+      }
+      if (email) break;
     }
-    mpData = { name: m.nameDisplayAs, party: m.latestParty?.name || '', con, email };
-    document.getElementById('mpPty').textContent = mpData.party;
-    document.getElementById('mpNm').textContent = mpData.name;
-    document.getElementById('mpCon').textContent = 'MP for ' + mpData.con;
-    document.getElementById('mpCard').classList.add('show');
-    document.getElementById('mpHint').style.display = 'block';
-    document.getElementById('toTs3').style.display = 'flex';
-  } catch(e) {
-    document.getElementById('mpErr').textContent = 'Error: ' + e.message;
-    document.getElementById('mpErr').style.display = 'block';
+  } catch(_){}
+
+  if (!email) {
+    const cleaned = member.nameDisplayAs
+      .replace(/^(The Rt Hon |Rt Hon |Sir |Dame |Dr |Mr |Mrs |Ms |Miss )/gi,'').trim();
+    const parts = cleaned.split(/\s+/);
+    email = parts.length >= 2
+      ? `${parts[0].toLowerCase().replace(/[^a-z]/g,'')}.${parts[parts.length-1].toLowerCase().replace(/[^a-z]/g,'')}@parliament.uk`
+      : 'contact@parliament.uk';
+  }
+
+  return {
+    name: member.nameDisplayAs,
+    party: member.latestParty?.name || '',
+    constituency: member.latestHouseMembership?.membershipFrom || conName,
+    email
+  };
+}
+
+async function step2() {
+  const name    = document.getElementById('uName').value.trim();
+  const rawPost = document.getElementById('uPost').value.trim().toUpperCase().replace(/\s+/g,'');
+  if (!name)    { alert('Please enter your name.'); return; }
+  if (!rawPost) { alert('Please enter your postcode.'); return; }
+  if (!/^[A-Z]{1,2}\d[A-Z\d]?\d[A-Z]{2}$/.test(rawPost)) {
+    alert('Please enter a valid UK postcode, e.g. M14 5LR or SW1A 2AA');
+    return;
+  }
+
+  goStep(2);
+  const loadEl  = document.getElementById('mpLoad');
+  const errEl   = document.getElementById('mpErr');
+  const cardEl  = document.getElementById('mpCard');
+  const hintEl  = document.getElementById('mpHint');
+  const toStep3 = document.getElementById('toTs3');
+
+  loadEl.classList.add('show');
+  cardEl.classList.remove('show');
+  hintEl.style.display = 'none';
+  toStep3.style.display = 'none';
+  errEl.style.display = 'none';
+
+  try {
+    let mp = null;
+
+    // Try local database first (instant, no API needed)
+    const db = await loadMPDatabase();
+    if (db) {
+      mp = await lookupMPFromDB(rawPost, db);
+    }
+
+    // Fall back to live Parliament API
+    if (!mp) {
+      mp = await lookupMPFromAPI(rawPost);
+    }
+
+    if (!mp) throw new Error('MP not found for this postcode.');
+
+    mpData = mp;
+
+    document.getElementById('mpPty').textContent        = mp.party;
+    document.getElementById('mpNm').textContent         = mp.name;
+    document.getElementById('mpCon').textContent        = `MP for ${mp.constituency}`;
+    document.getElementById('mpEmailShown').textContent = `✉ ${mp.email}`;
+
+    cardEl.classList.add('show');
+    hintEl.style.display  = 'block';
+    toStep3.style.display = 'flex';
+
+  } catch(err) {
+    errEl.innerHTML = `<strong>Could not find your MP.</strong> ${err.message}
+      <br><small style="display:block;margin-top:0.5rem">
+        Find your MP manually: <a href="https://members.parliament.uk/FindYourMP" target="_blank" style="color:var(--red);text-decoration:underline">members.parliament.uk/FindYourMP</a>
+      </small>`;
+    errEl.style.display = 'block';
   } finally {
-    document.getElementById('mpLoad').classList.remove('show');
+    loadEl.classList.remove('show');
   }
 }
 
 function step3() {
   const name = document.getElementById('uName').value.trim();
   const debt = parseInt(document.getElementById('dRange').value);
-  const uni = document.getElementById('uUni').value.trim();
-  const yr = document.getElementById('uYear').value.trim();
-  const ds = '£' + debt.toLocaleString();
-  let personal, urgency, ask;
+  const uni  = document.getElementById('uUni').value.trim();
+  const yr   = document.getElementById('uYear').value.trim();
+  const ds   = '£' + debt.toLocaleString();
+  const postcode = document.getElementById('uPost').value.trim().toUpperCase();
+
+  let personal, ask;
+
   if (debt === 0) {
-    urgency = 'As someone who was fortunate enough to avoid significant student debt';
-    personal = 'I have watched friends and colleagues struggle under the weight of loans that follow them for decades.';
+    personal = 'I have watched friends and colleagues struggle under the weight of loans that follow them for decades, affecting every major life decision they make.';
     ask = 'I urge you to support legislation to abolish tuition fees and provide a fair path to debt cancellation for existing borrowers.';
   } else if (debt < 20000) {
-    urgency = 'As a constituent carrying ' + ds + ' in student debt';
-    personal = 'While my debt of ' + ds + ' is lower than many, it still affects my financial decisions and my ability to save, invest, and plan for my future.';
-    ask = 'I urge you to support the abolition of tuition fees and a fair cancellation scheme for existing borrowers.';
+    personal = `My balance of ${ds} still affects my ability to save, to plan, and to build the kind of financial security my parents' generation could take for granted.`;
+    ask = 'I urge you to support the abolition of tuition fees in England and Wales, and a fair cancellation scheme for existing borrowers.';
   } else if (debt < 50000) {
-    urgency = 'As a constituent carrying ' + ds + ' in student debt';
-    personal = 'My debt of ' + ds + ' shapes every major financial decision I make — from whether to rent or buy, to whether I can afford to start a family or change career. The HEPI has found that graduates like me face an effective marginal rate of up to 51% when income tax, National Insurance, and loan repayments are combined.';
-    ask = 'I am calling on you to actively support the abolition of tuition fees in England and Wales, and a fair cancellation scheme for those already burdened with existing debt.';
+    personal = `My balance of ${ds} shapes every financial decision I make — from whether I can afford to move, to whether I can start a family, to whether I can take the career I actually want rather than the one that pays enough to service this debt. The HEPI has found that graduates like me face an effective marginal rate of up to 51% when income tax, National Insurance and loan repayments are combined. This is not a loan. It is a tax on aspiration.`;
+    ask = `I am calling on you to actively support the abolition of tuition fees in England and Wales, and a fair, independent cancellation scheme for the ${ds} and similar sums carried by millions of graduates.`;
   } else {
-    urgency = 'As a constituent carrying over ' + ds + ' in student debt';
-    personal = 'My student debt of ' + ds + ' is not a manageable investment — it is a structural trap. The IPPR confirmed that for many graduates, "the balance isn\'t even going down at all as the repayments they are making are dwarfed by the interest on the debt." At the current maximum rate of 6.2% (RPI + 3%), I may owe more in ten years than I do today despite making every repayment on time. Martin Lewis described the government\'s threshold freeze as something "no commercial lender would be allowed to do." He is right, and it must be reversed.';
-    ask = 'I am urging you in the strongest possible terms to support the full abolition of tuition fees and a comprehensive cancellation scheme for existing student debt. A Westminster Hall debate on this issue was held on 25 February 2026. The political moment is now. I expect my elected representative to act on it.';
+    personal = `My balance of ${ds} is not a manageable investment — it is a structural trap. The IPPR has confirmed that for many graduates "the balance isn't even going down at all" because repayments are dwarfed by interest. With Plan 2 loans charged at up to 6.2% (RPI+3%), I may owe more in a decade than I do today despite making every payment on time. Martin Lewis called the threshold freeze "a breach of natural justice" that no commercial lender would be allowed to impose. He is right.`;
+    ask = `I am urging you in the strongest possible terms to support the full abolition of tuition fees and a comprehensive, independently administered cancellation scheme for existing student debt. The Westminster Hall debate of 25 February 2026 shows the political window is open. I expect my elected representative to act through it.`;
   }
-  const uniLine = uni ? ' I studied at ' + uni + (yr ? ', graduating in ' + yr + ',' : '') + ' and' : (yr ? ' I graduated in ' + yr + ' and' : '');
 
-  const body = `Dear ${mpData.name},
+  const uniLine = uni
+    ? ` I studied at ${uni}${yr ? `, graduating in ${yr},` : ''} and`
+    : (yr ? ` I graduated in ${yr} and` : '');
+
+  const prefix = debt === 0
+    ? 'As someone who was fortunate enough to avoid significant student debt'
+    : `As a constituent carrying ${debt > 50000 ? 'over ' : ''}${ds} in student debt`;
+
+  const body =
+`Dear ${mpData.name},
 
 I am writing to you as your constituent regarding the urgent issue of student debt and tuition fees in England and Wales.
 
-${urgency},${uniLine ? uniLine + ' I' : ' I'} am deeply concerned by the profound structural inequality at the heart of our higher education funding system.
+${prefix},${uniLine ? uniLine + ' I' : ' I'} am deeply concerned by the structural inequality at the heart of our higher education funding system — and by the continued absence of political will to address it.
 
 ${personal}
 
-I would like to draw your attention to two facts that I believe no politician in England can continue to ignore in good conscience.
+I would like to draw your attention to two facts that I believe no MP in England can continue to overlook.
 
-First: students domiciled in Scotland and studying at Scottish universities have paid no tuition fees since 2001. Scottish universities remain globally competitive. There is no principled economic case for England failing to do the same — the Scottish Government has been "resolute in its commitment to free tuition" for twenty-five years. The only reason England has not done likewise is political will, or the absence of it.
+First: students domiciled in Scotland and studying at Scottish universities have paid zero tuition fees since 2001. Scottish universities remain globally competitive. There is no principled economic reason England cannot do the same. The obstacle is political will, not fiscal constraint.
 
-Second: England is an international outlier. According to the OECD's Education at a Glance 2025, England's annual fees (now £9,535 in 2025–26) exceed those of every other country in the analysis, bar US private institutions. Germany, Norway, Denmark, Finland, France and Greece all provide free or near-free higher education. These are not developing economies — they are our peers, and they have made a different choice.
+Second: England is a global outlier. According to the OECD's Education at a Glance 2025, England's annual fees — now £9,535 in 2025–26 — exceed those of every other country in the analysis bar US private universities. Germany, Norway, Denmark, Finland, France and Greece all provide free or near-free higher education. They are our peers, and they have made a different political choice.
 
 ${ask}
 
-Specifically, I call on you to advocate for the following:
+Specifically, I am asking you to advocate for:
 1. An immediate freeze on interest rates for all existing student loans
-2. Reversal of the repayment threshold freeze announced in the 2025 Autumn Budget
-3. A transparent, fair, and independently administered debt cancellation scheme for existing borrowers
-4. A long-term transition to a free, publicly-funded higher education system — as exists in Scotland and across much of Europe
+2. Reversal of the repayment threshold freeze from the 2025 Autumn Budget — which Martin Lewis called "a breach of natural justice"
+3. A transparent, fair and independently administered debt cancellation scheme for existing borrowers
+4. A long-term transition to free, publicly-funded higher education, as exists in Scotland and across Europe
 
-A Westminster Hall debate on student loan repayment plans took place on 25 February 2026. I would like to know your position on this debate, what representations you made or plan to make, and what steps you are prepared to take to support reform.
+Outstanding student loan balances reached £267 billion in March 2025 and are forecast to reach £500 billion by the late 2040s. A Westminster Hall debate on this took place on 25 February 2026. I want to know your position, what representations you have made to the Department for Education, and what steps you will take for your constituents who carry this debt.
 
 I look forward to your response.
 
 Yours sincerely,
 ${name}
-${document.getElementById('uPost').value.trim().toUpperCase()}`;
+${postcode}`;
 
   document.getElementById('eTo').textContent = mpData.email;
   document.getElementById('eBody').value = body;
@@ -1422,9 +1712,13 @@ ${document.getElementById('uPost').value.trim().toUpperCase()}`;
 function doSend() {
   const subj = "Student Loans & Tuition Fees — A Constituent's Concern";
   const body = document.getElementById('eBody').value;
-  window.location.href = 'mailto:' + mpData.email + '?subject=' + encodeURIComponent(subj) + '&body=' + encodeURIComponent(body);
-  document.getElementById('okMsg').style.display = 'block';
+  window.location.href = `mailto:${mpData.email}?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(body)}`;
+  setTimeout(() => {
+    document.getElementById('okMsg').style.display = 'block';
+    document.getElementById('fallbackNote').style.display = 'block';
+  }, 800);
 }
+
 </script>
 </body>
 </html>
